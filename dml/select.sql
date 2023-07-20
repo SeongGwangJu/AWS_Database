@@ -20,6 +20,16 @@ where
     or student_score is not null)
     and student_name = '김준일'; #괄호가 없으면 '김준일'조건은 nn과 and면 된다. 괄호가 있으면 age20까지 포함.
     
+#스코어를 바꿔보자
+update student_tb
+set
+	student_score = 20
+where
+	student_age = 21;
+#이런식으로 값바꾸는건 위험하다. 20살이면 모두 10점으로 바꾼다..?
+#edit -> preference -> SQL Editor-> Safe Updates 체크 해제
+
+
 #나이가 20살인 학생들의 점수를 전부 더하세요
 select
 	student_age,
@@ -29,6 +39,7 @@ from
 group by
 	student_age;
     
+#알리아스 추가
 select
 	student_age,
     sum(student_score) as total_score
@@ -38,6 +49,7 @@ where
 	student_age = 20
 group by
 	student_age;
+    
     
     #토탈 스코어가 30인 애를 찾아라.
 select
@@ -52,12 +64,24 @@ group by
 having
 	total_score = 30;
 	
-    
-update student_tb
-set
-	student_score = 10
+
+#count : 데이터가 몇개가 있는가?
+select
+	count(*)
+from
+	student_tb
 where
-	student_age = 22;
-#이런식으로 값바꾸는건 위험하다. 20살이면 모두 10점으로 바꾼다..?
-#edit -> preference -> SQL Editor-> Safe Updates 체크 해제
+	student_age = 20;
+    
+#성적순 정렬 (오름차순 :asc, 내림차순 : desc)
+select
+	*
+from
+	student_tb
+order by
+	student_score desc, #성적별 내림차순 정렬
+    student_id asc; #id번호 오름차순
+
+    
+    
     
