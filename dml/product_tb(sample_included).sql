@@ -80,8 +80,9 @@ where
 	product_name != product_name
 group by
 	category_id;
-#틀렸따..아래는 강사님 풀이
-#서브쿼리
+#틀렸따..중복인 값들은 1개만 남는게 아니라 아예 없어지게된다. 아래는 강사님 풀이
+
+#서브쿼리(from안을 보자)
 select
 	category_id,
     sum(product_price)
@@ -98,12 +99,13 @@ from
 		category_id) as product_name_group
 group by
 	category_id;
+    
 #5. 상품의 가격이 10만원 ~ 20만원 사이의 상품 중에 동일 카테고리 상품의 총액을 조회하고
 #	총액의 내림차순으로 정렬하시오
 
 select 
 	category_id,
-	sum(product_price) as sum_price
+	sum(product_price) as total_product_price
 from
 	product_tb
 where
@@ -111,5 +113,6 @@ where
 group by
 	category_id
 order by
-	sum_price desc;
+	total_product_price desc;
+
     
