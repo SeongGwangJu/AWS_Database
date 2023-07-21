@@ -21,3 +21,8 @@ values(0, 1,'김준일의 자기소개'); #user_tb의 user_id는 AI되므로, �
 
 insert into table2
 values(0, 1, '자기소개 내용을 입력하세요.');
+
+delete
+from user_tb
+where
+	name = '김준이';
