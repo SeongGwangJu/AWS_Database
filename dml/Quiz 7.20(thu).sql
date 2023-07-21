@@ -44,7 +44,7 @@ group by
 select
 	odt.product_id, #나랑 차이점 :나는 name, 강사님은 id로 조회
     sum(odt.count_number) as total_order_count,
-    sum(pt.product_price) as total_product_price #count_number를 곱하지 않음
+    sum(pt.product_price*odt.count_number) as total_product_price #count_number를 곱하지 않음
 from
 	order_detail_tb odt
     left outer join product_tb pt on(pt.product_id = odt.product_id)
