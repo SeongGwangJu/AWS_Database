@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>aws_java_database_seonggwang</groupId>
-  <artifactId>aws_java_database_seonggwang</artifactId>
+  <groupId>aws_java_database_seonggwang_2</groupId>
+  <artifactId>aws_java_database_seonggwang_2</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
   <dependencies>
@@ -20,7 +20,7 @@
 		</dependency>
 	  
   </dependencies>
-  
+  >
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>

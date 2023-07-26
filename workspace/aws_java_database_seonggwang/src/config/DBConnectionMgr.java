@@ -38,7 +38,7 @@ import java.util.Vector;
  */
 public class DBConnectionMgr {
 
-    private Vector connections = new Vector(10);
+    private Vector connections = new Vector(10); //연결된 커넥터의 수를 제한
     
     //
     private String _driver = "com.mysql.cj.jdbc.Driver", //커넥터에서 Driver.class의 경로 입력.
