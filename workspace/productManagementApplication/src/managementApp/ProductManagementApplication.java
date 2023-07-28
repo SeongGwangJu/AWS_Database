@@ -34,7 +34,7 @@ public class ProductManagementApplication extends JFrame {
 	 */
 	public ProductManagementApplication() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 452, 333);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -50,11 +50,41 @@ public class ProductManagementApplication extends JFrame {
 				
 			}
 		});
-		productRegisterFrameOpenButton.setBounds(68, 86, 97, 23);
+		productRegisterFrameOpenButton.setBounds(63, 10, 306, 42);
 		contentPane.add(productRegisterFrameOpenButton);
 		
-		JButton productListFrameOpenButton = new JButton("상품조회");
-		productListFrameOpenButton.setBounds(262, 86, 97, 23);
-		contentPane.add(productListFrameOpenButton);
+		JButton productSearchFrameOpenButton = new JButton("상품조회");
+		productSearchFrameOpenButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ProductSearchFrame productSearchFrame = 
+						new ProductSearchFrame();
+				productSearchFrame.setVisible(true);
+			}
+		});
+		productSearchFrameOpenButton.setBounds(63, 85, 306, 42);
+		contentPane.add(productSearchFrameOpenButton);
+		
+		JButton productColorRegisterFrameOpenButton_1 = new JButton("상품색상등록");
+		productColorRegisterFrameOpenButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ProductColorRegisterFrame productColorRegisterFrame = new ProductColorRegisterFrame();
+				productColorRegisterFrame.setVisible(true); 
+			}
+		});
+		productColorRegisterFrameOpenButton_1.setBounds(63, 160, 306, 42);
+		contentPane.add(productColorRegisterFrameOpenButton_1);
+		
+		JButton productCategoryRegisterFrameOpenButton_2 = new JButton("상품카테고리 등록");
+		productCategoryRegisterFrameOpenButton_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ProductCategoryRegisterFrame productCategoryRegisterFrame = new ProductCategoryRegisterFrame();
+				productCategoryRegisterFrame.setVisible(true); 
+			}
+		});
+		productCategoryRegisterFrameOpenButton_2.setBounds(63, 235, 306, 42);
+		contentPane.add(productCategoryRegisterFrameOpenButton_2);
 	}
 }
