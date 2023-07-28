@@ -127,10 +127,12 @@ public class RegistrationUser extends JFrame {
 		
 	}
 	
+	
 	private void updateUserListTable(JTable jTable) {
 		jTable.setModel(getUserTableModel());
 		
 	}
+	
 	public DefaultTableModel getUserTableModel() {
 		String[] header = new String[] { "user_id", "username", "password" };
 		
@@ -147,6 +149,7 @@ public class RegistrationUser extends JFrame {
 		return new DefaultTableModel(userModelArray, header);
 	}
 	
+	
 	public List<List<Object>> getUserListAll() {
 		DBConnectionMgr pool = DBConnectionMgr.getInstance();
 		Connection con = null;
@@ -159,6 +162,7 @@ public class RegistrationUser extends JFrame {
 			String sql = "select * from user_tb";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
+			
 			while(rs.next()) {
 				List<Object> dtlList = new ArrayList<>();
 				dtlList.add(rs.getInt(1));

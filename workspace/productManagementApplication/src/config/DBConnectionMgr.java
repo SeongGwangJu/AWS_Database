@@ -42,7 +42,7 @@ public class DBConnectionMgr {
     
     //
     private String _driver = "com.mysql.cj.jdbc.Driver", //커넥터에서 Driver.class의 경로 입력.
-    _url = "jdbc:mysql://localhost:3306/study3", // 서버주소:포트/DB이름
+    _url = "jdbc:mysql://localhost:3306/product", // 서버주소:포트/DB이름
     _user = "root",
     _password = "1q2w3e4r";
     

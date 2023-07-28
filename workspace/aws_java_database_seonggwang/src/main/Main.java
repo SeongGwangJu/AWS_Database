@@ -36,6 +36,7 @@ public class Main {
 //			ResultSet rs = pstmt.executeQuery();
 			rs = pstmt.executeQuery();
 			
+			
 			//결과가 담긴 ResultSet을 반복작업을 통해 데이터 조회
 			System.out.println("번호\t|\t아이디\t|\t비밀번호");
 			while(rs.next()) { //1행->2행->......
