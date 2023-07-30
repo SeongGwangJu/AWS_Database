@@ -80,7 +80,6 @@ public class ProductModifyFrame extends JFrame {
 		
 		productNameTextField = new JTextField();
 		productNameTextField.setBounds(76, 100, 341, 21);
-		//productNameTextField.setEnabled(false);
 		contentPane.add(productNameTextField);
 		productNameTextField.setColumns(10);
 		
@@ -120,10 +119,7 @@ public class ProductModifyFrame extends JFrame {
 				String productName = productNameTextField.getText();
 				
 				if(CustomSwingTextUtil.isTextEmpty(contentPane, productName)) {return;}
-				if(ProductService.getInstance().isProductNameDuplicated(productName)) {
-					JOptionPane.showMessageDialog(contentPane, "이미 존재하는 상품명입니다", "중복오류", JOptionPane.ERROR_MESSAGE );
-					return;
-				}
+				
 				String productPrice = productPriceTextField.getText();
 				if(CustomSwingTextUtil.isTextEmpty(contentPane, productPrice)) {return;}
 				
@@ -134,31 +130,40 @@ public class ProductModifyFrame extends JFrame {
 				if(CustomSwingTextUtil.isTextEmpty(contentPane, productCategoryName)) {return;}
 				
 				Product product = Product.builder()
+						.product_Id(productId)
 						.product_Name(productName)
 						.product_Price(Integer.parseInt(productPrice)) // String to int Parse.
 						.productColor(ProductColor.builder().color_Name(productColorName).build())
 						.productCategory(ProductCategory.builder().category_Name(productCategoryName).build())
 						.build();
 				
-				if(!ProductService.getInstance().registerProduct(product)) {
-					JOptionPane.showMessageDialog(contentPane, "상품수정 중 오류가 발생하였습니다.", "수정오류", JOptionPane.ERROR_MESSAGE);
+				if(!ProductService.getInstance().modifyProduct(product)) {
+					JOptionPane.showMessageDialog(contentPane, "상품수정 중 오류가 발생하였습니다.", "수정 오류", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 				
 					JOptionPane.showMessageDialog(contentPane, "새로운 상품을 수정하였습니다",  "수정 성공", JOptionPane.PLAIN_MESSAGE);
+					ProductSearchFrame.getInstance().setSearchProductTableModel();
+					dispose();
 					
 					CustomSwingTextUtil.clearTextField(productNameTextField);
 					CustomSwingTextUtil.clearTextField(productPriceTextField);
 					colorComboBox.setSelectedIndex(0);
 					categoryComboBox.setSelectedIndex(0);
 			}
-			
 		});
 		registerSubmitButton.setBounds(12, 256, 405, 68);
 		contentPane.add(registerSubmitButton);
 		
 
-
+		Product product = ProductService.getInstance().getProductByProductId(productId);
+		if(product != null) {
+			productIdTextField.setText(Integer.toString(product.getProduct_Id()));
+			productNameTextField.setText(product.getProduct_Name());
+			productPriceTextField.setText(Integer.toString(product.getProduct_Price()));
+			colorComboBox.setSelectedItem(product.getProductColor().getColor_Name());
+			categoryComboBox.setSelectedItem(product.getProductCategory().getCategory_Name());
+		}
 		
 
 	}

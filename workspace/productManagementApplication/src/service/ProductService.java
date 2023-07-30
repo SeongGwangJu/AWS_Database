@@ -46,6 +46,13 @@ public class ProductService {
 	public boolean removeProduct(int product_Id) {
 		return productRepository.deleteProduct(product_Id) >0;
 	}
-
+	
+	public Product getProductByProductId(int productId) {
+		return productRepository.findProductNameByProductId(productId);
+	}
+	
+	public boolean modifyProduct(Product product) {
+		return productRepository.updateProduct(product) > 0;
+	}
 	
 }

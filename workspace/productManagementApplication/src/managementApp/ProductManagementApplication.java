@@ -13,9 +13,7 @@ public class ProductManagementApplication extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -29,9 +27,6 @@ public class ProductManagementApplication extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public ProductManagementApplication() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 452, 333);
@@ -46,7 +41,7 @@ public class ProductManagementApplication extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				ProductRegisterFrame productRegisterFrame = new ProductRegisterFrame(); //JFrame인 객체 생성
-				productRegisterFrame.setVisible(true); //새창띄우기
+				productRegisterFrame.setVisible(true); //새 창띄우기
 				
 			}
 		});
@@ -58,7 +53,7 @@ public class ProductManagementApplication extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				ProductSearchFrame productSearchFrame = 
-						new ProductSearchFrame();
+						ProductSearchFrame.getInstance(); //싱글톤으로 변경
 				productSearchFrame.setVisible(true);
 			}
 		});

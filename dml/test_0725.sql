@@ -82,6 +82,7 @@ WHERE
 #5
 create index product_code_index on product_tb(product_code);
 
+show index from product_tb;
 #6.
 
 insert into 
@@ -108,7 +109,7 @@ SELECT
 FROM
 	test_0725.user_view
 where
-	`USERNAME` LIKE 'a%';
+	`USERNAME` LIKE 'A%';
 
 #7
 show index from user_mst;
@@ -175,7 +176,7 @@ VALUES
 
 CALL FIND_USER_BY_USERNAME('JOHN');
 
-SELECT 
+SELECT p_update_productp_insert_product
 	UM.*,
     UD.PHONE,
     UD.GENDER
